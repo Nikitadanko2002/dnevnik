@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавить посещаемость{% endblock %}
+
+{% block content %}
+    <h1>Добавить посещаемость</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="student">Ученик:</label>
+        <select name="student" id="student">
+            {% for student in students %}
+                <option value="{{ student.id }}">{{ student.full_name }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="date">Дата:</label>
+        <input type="date" name="date" id="date"><br>
+        <label for="presence">Присутствие:</label>
+        <select name="presence" id="presence">
+            <option value="1">Присутствовал</option>
+            <option value="0">Прогул</option>
+        </select><br>
+        <input type="submit" value="Добавить">
+    </form>
+{% endblock %}

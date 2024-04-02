@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Online Journal{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'students_list' %}">Ученики</a></li>
+            <li><a href="{% url 'add_grade' %}">Добавить оценку</a></li>
+            <li><a href="{% url 'add_attendance' %}">Добавить посещаемость</a></li>
+        </ul>
+    </nav>
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавить оценку{% endblock %}
+
+{% block content %}
+    <h1>Добавить оценку</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="student">Ученик:</label>
+        <select name="student" id="student">
+            {% for student in students %}
+                <option value="{{ student.id }}">{{ student.full_name }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="subject">Предмет:</label>
+        <select name="subject" id="subject">
+            {% for subject in subjects %}
+                <option value="{{ subject.id }}">{{ subject.name }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="grade">Оценка:</label>
+        <input type="number" name="grade" id="grade" min="1" max="5"><br>
+        <label for="comment">Комментарий:</label>
+        <textarea name="comment" id="comment"></textarea><br>
+        <input type="submit" value="Добавить">
+    </form>
+{% endblock %}
